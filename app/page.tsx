@@ -245,8 +245,11 @@ export default function Home() {
       )}
 
       <footer>
-        Songs are generated with AI. Anthem is a prototype — please make music about
-        your own life, not real artists.
+        <p className="credit">Designed &amp; built by Eve D.</p>
+        <p>
+          Songs are generated with AI. Anthem is a prototype — please make music about
+          your own life, not real artists.
+        </p>
       </footer>
     </main>
   );
