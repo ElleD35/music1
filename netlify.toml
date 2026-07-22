@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Netlify auto-detects Next.js and applies @netlify/plugin-nextjs.
+# Remember to set SUNO_API_KEY in Site settings > Environment variables.
