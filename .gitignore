@@ -1,32 +1,40 @@
-# dependencies
+# ---- dependencies ----
 /node_modules
 /.pnp
 .pnp.js
+.yarn/*
 
-# next.js
+# ---- next.js / build output ----
 /.next/
 /out/
-
-# production
 /build
+/dist
+*.tsbuildinfo
+next-env.d.ts
 
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# env files — NEVER commit real secrets
+# ---- environment & secrets (NEVER commit) ----
 .env
 .env.*
 !.env.example
 
-# claude local
+# ---- logs ----
+*.log
+.dev-server.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- os / editor cruft ----
+.DS_Store
+Thumbs.db
+*.pem
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# ---- claude local (personal, not shared) ----
 CLAUDE.local.md
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# ---- netlify local ----
+.netlify
