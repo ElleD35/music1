@@ -16,6 +16,7 @@ export type SunoStatus =
 export type SunoTrack = {
   id: string;
   title: string;
+  lyrics: string | null;
   audioUrl: string | null;
   streamAudioUrl: string | null;
   imageUrl: string | null;
@@ -100,6 +101,8 @@ export async function getTask(taskId: string): Promise<TaskResult> {
   const tracks: SunoTrack[] = rawTracks.map((t) => ({
     id: String(t?.id ?? ""),
     title: t?.title || "Untitled",
+    // Suno returns the generated lyrics for each clip in the `prompt` field.
+    lyrics: (t?.prompt ?? "").trim() || null,
     audioUrl: t?.audioUrl || null,
     streamAudioUrl: t?.streamAudioUrl || null,
     imageUrl: t?.imageUrl || null,

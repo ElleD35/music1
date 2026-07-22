@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 type Track = {
   id: string;
   title: string;
+  lyrics: string | null;
   audioUrl: string | null;
   streamAudioUrl: string | null;
   imageUrl: string | null;
@@ -222,22 +223,33 @@ export default function Home() {
             const src = t.audioUrl || t.streamAudioUrl || "";
             return (
               <div className="track" key={t.id}>
-                {t.imageUrl && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={t.imageUrl} alt="" />
-                )}
-                <div className="track-body">
-                  <p className="track-title">{t.title}</p>
-                  {src && <audio controls preload="none" src={src} />}
-                  <div className="track-meta">
-                    {t.duration != null && <span>{Math.round(t.duration)}s</span>}
-                    {t.audioUrl && (
-                      <a href={t.audioUrl} download target="_blank" rel="noreferrer">
-                        Download
-                      </a>
-                    )}
+                <div className="track-head">
+                  {t.imageUrl && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={t.imageUrl} alt="" />
+                  )}
+                  <div className="track-body">
+                    <p className="track-title">{t.title}</p>
+                    {src && <audio controls preload="none" src={src} />}
+                    <div className="track-meta">
+                      {t.duration != null && <span>{Math.round(t.duration)}s</span>}
+                      {t.audioUrl && (
+                        <a href={t.audioUrl} download target="_blank" rel="noreferrer">
+                          Download
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
+
+                {t.lyrics ? (
+                  <details className="lyrics">
+                    <summary>Lyrics</summary>
+                    <pre>{t.lyrics}</pre>
+                  </details>
+                ) : (
+                  <p className="lyrics-none">Instrumental — no lyrics.</p>
+                )}
               </div>
             );
           })}
